@@ -1,0 +1,1026 @@
+{
+  "configById": {
+    "3D!linggou3d": {
+      "cameraState": {
+        "perspective": true,
+        "distance": 3.5,
+        "phi": 55,
+        "thetaOffset": 40,
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fovy": 45,
+        "near": 0.05,
+        "far": 5000
+      },
+      "scene": {
+        "backgroundColor": "#0d1117",
+        "mainLightMode": "headlight",
+        "directionalLightIntensity": 2.2,
+        "hemisphereLightIntensity": 1.2,
+        "transforms": {
+          "showLabel": false,
+          "axisScale": 0,
+          "lineWidth": 0,
+          "lineColor": "#00000000"
+        }
+      },
+      "transforms": {},
+      "topics": {
+        "/lidar": {
+          "visible": true,
+          "pointSize": 5,
+          "pointShape": "circle",
+          "decayTime": 4,
+          "colorMode": "colormap",
+          "colorField": "distance",
+          "colorMap": "turbo",
+          "minValue": 0.2,
+          "maxValue": 6,
+          "explicitAlpha": 0.9
+        },
+        "/scene": {
+          "visible": true,
+          "showOutlines": true
+        }
+      },
+      "layers": {
+        "grid": {
+          "visible": true,
+          "instanceId": "grid",
+          "layerId": "foxglove.Grid",
+          "label": "Grid",
+          "frameLocked": true,
+          "frameId": "world",
+          "size": 12,
+          "divisions": 12,
+          "lineWidth": 1.5,
+          "color": "#1e3a5f",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "followTf": "cart",
+      "lichtblickPanelTitle": "主视角(跟车)",
+      "followMode": "follow-pose"
+    },
+    "Indicator!mode": {
+      "path": "/mode.v",
+      "fallbackLabel": "模式",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "FOLLOW",
+          "operator": "=",
+          "rawValue": "1"
+        },
+        {
+          "color": "#1f6feb",
+          "label": "SCAN",
+          "operator": "=",
+          "rawValue": "2"
+        }
+      ],
+      "lichtblickPanelTitle": "模式"
+    },
+    "Indicator!follow": {
+      "path": "/follow.st",
+      "fallbackLabel": "跟随",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#6e7681",
+          "label": "IDLE",
+          "operator": "=",
+          "rawValue": "0"
+        },
+        {
+          "color": "#6e7681",
+          "label": "STOPPED",
+          "operator": "=",
+          "rawValue": "1"
+        },
+        {
+          "color": "#d29922",
+          "label": "HOLDING",
+          "operator": "=",
+          "rawValue": "2"
+        },
+        {
+          "color": "#238636",
+          "label": "APPROACH",
+          "operator": "=",
+          "rawValue": "3"
+        },
+        {
+          "color": "#da3633",
+          "label": "LOST",
+          "operator": "=",
+          "rawValue": "4"
+        },
+        {
+          "color": "#d29922",
+          "label": "SEARCH",
+          "operator": "=",
+          "rawValue": "5"
+        }
+      ],
+      "lichtblickPanelTitle": "跟随状态"
+    },
+    "Indicator!uwb": {
+      "path": "/uwb.ok",
+      "fallbackLabel": "UWB",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "UWB OK",
+          "operator": "=",
+          "rawValue": "1"
+        },
+        {
+          "color": "#da3633",
+          "label": "UWB 丢失",
+          "operator": "=",
+          "rawValue": "0"
+        }
+      ],
+      "lichtblickPanelTitle": "UWB 定位"
+    },
+    "Indicator!prox": {
+      "path": "/prox.d",
+      "fallbackLabel": "障碍",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#da3633",
+          "label": "近障!",
+          "operator": "<",
+          "rawValue": "20"
+        },
+        {
+          "color": "#238636",
+          "label": "畅通",
+          "operator": ">=",
+          "rawValue": "20"
+        }
+      ],
+      "lichtblickPanelTitle": "障碍距离"
+    },
+    "Indicator!radar": {
+      "path": "/lidar_meta.s",
+      "fallbackLabel": "雷达",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "雷达 OK",
+          "operator": "=",
+          "rawValue": "2"
+        },
+        {
+          "color": "#da3633",
+          "label": "雷达 ERR",
+          "operator": "=",
+          "rawValue": "3"
+        }
+      ],
+      "lichtblickPanelTitle": "雷达"
+    },
+    "Indicator!batt": {
+      "path": "/power.low",
+      "fallbackLabel": "电池",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "电池 OK",
+          "operator": "=",
+          "rawValue": "0"
+        },
+        {
+          "color": "#da3633",
+          "label": "低电!",
+          "operator": "=",
+          "rawValue": "1"
+        }
+      ],
+      "lichtblickPanelTitle": "电池"
+    },
+    "Indicator!link": {
+      "path": "/health.wifi",
+      "fallbackLabel": "链路",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "链路 OK",
+          "operator": "=",
+          "rawValue": "1"
+        },
+        {
+          "color": "#da3633",
+          "label": "链路断",
+          "operator": "=",
+          "rawValue": "0"
+        }
+      ],
+      "lichtblickPanelTitle": "链路"
+    },
+    "Indicator!openmv": {
+      "path": "/vi.name",
+      "fallbackLabel": "OpenMV",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#e3b341",
+          "label": "01 苹果",
+          "operator": "=",
+          "rawValue": "苹果"
+        },
+        {
+          "color": "#e3b341",
+          "label": "02 香蕉",
+          "operator": "=",
+          "rawValue": "香蕉"
+        },
+        {
+          "color": "#238636",
+          "label": "03 牛奶",
+          "operator": "=",
+          "rawValue": "牛奶"
+        },
+        {
+          "color": "#e3b341",
+          "label": "04 鸡蛋",
+          "operator": "=",
+          "rawValue": "鸡蛋"
+        },
+        {
+          "color": "#e3b341",
+          "label": "05 大米",
+          "operator": "=",
+          "rawValue": "大米"
+        },
+        {
+          "color": "#e3b341",
+          "label": "06 食盐",
+          "operator": "=",
+          "rawValue": "食盐"
+        },
+        {
+          "color": "#e3b341",
+          "label": "07 生抽",
+          "operator": "=",
+          "rawValue": "生抽"
+        },
+        {
+          "color": "#e3b341",
+          "label": "08 纸巾",
+          "operator": "=",
+          "rawValue": "纸巾"
+        },
+        {
+          "color": "#e3b341",
+          "label": "09 洗衣液",
+          "operator": "=",
+          "rawValue": "洗衣液"
+        },
+        {
+          "color": "#e3b341",
+          "label": "10 面包",
+          "operator": "=",
+          "rawValue": "面包"
+        },
+        {
+          "color": "#e3b341",
+          "label": "11 可乐",
+          "operator": "=",
+          "rawValue": "可乐"
+        }
+      ],
+      "lichtblickPanelTitle": "识别结果"
+    },
+    "Indicator!voice": {
+      "path": "/voice.broadcast",
+      "fallbackLabel": "语音播报",
+      "fallbackColor": "#30363d",
+      "style": "background",
+      "rules": [],
+      "lichtblickPanelTitle": "语音"
+    },
+    "Indicator!weight": {
+      "path": "/load.state",
+      "fallbackLabel": "称重状态",
+      "fallbackColor": "#30363d",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#6e7681",
+          "label": "待机",
+          "operator": "=",
+          "rawValue": "0"
+        },
+        {
+          "color": "#d29922",
+          "label": "等待有效称重",
+          "operator": "=",
+          "rawValue": "1"
+        },
+        {
+          "color": "#238636",
+          "label": "有效采样",
+          "operator": "=",
+          "rawValue": "2"
+        }
+      ],
+      "lichtblickPanelTitle": "载重状态"
+    },
+    "Plot!mini": {
+      "paths": [
+        {
+          "value": "/power.v",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "color": "#e3b341",
+          "label": "电压 V",
+          "lineSize": 2
+        },
+        {
+          "value": "/pose.vx",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "color": "#4a9eff",
+          "label": "速度 m/s",
+          "lineSize": 2
+        },
+        {
+          "value": "/health.lp",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "color": "#8fd694",
+          "label": "主循环 Hz",
+          "lineSize": 2
+        },
+        {
+          "value": 11.1,
+          "color": "#da3633",
+          "label": "3S 低电参考"
+        }
+      ],
+      "showLegend": true,
+      "isSynced": false,
+      "xAxisVal": "timestamp",
+      "followingViewWidth": 30,
+      "lichtblickPanelTitle": "遥测曲线",
+      "legendDisplay": "top",
+      "showPlotValuesInLegend": true
+    },
+    "Publish!q": {
+      "topicName": "/cmd",
+      "datatype": "json",
+      "value": "{\"cmd\":\"$q\"}",
+      "buttonText": "进跟随 $q",
+      "buttonColor": "#238636",
+      "advancedView": false,
+      "lichtblickPanelTitle": "进跟随"
+    },
+    "Publish!w": {
+      "topicName": "/cmd",
+      "datatype": "json",
+      "value": "{\"cmd\":\"$w\"}",
+      "buttonText": "进扫描 $w",
+      "buttonColor": "#1f6feb",
+      "advancedView": false,
+      "lichtblickPanelTitle": "进扫描"
+    },
+    "Publish!qm": {
+      "topicName": "/cmd",
+      "datatype": "json",
+      "value": "{\"cmd\":\"$q-\"}",
+      "buttonText": "停跟随 $q-",
+      "buttonColor": "#6e7681",
+      "advancedView": false,
+      "lichtblickPanelTitle": "停跟随"
+    },
+    "Publish!wm": {
+      "topicName": "/cmd",
+      "datatype": "json",
+      "value": "{\"cmd\":\"$w-\"}",
+      "buttonText": "停扫描 $w-",
+      "buttonColor": "#6e7681",
+      "advancedView": false,
+      "lichtblickPanelTitle": "停扫描"
+    },
+    "Publish!t1": {
+      "topicName": "/cmd",
+      "datatype": "json",
+      "value": "{\"cmd\":\"$i01\"}",
+      "buttonText": "test1",
+      "buttonColor": "#da7733",
+      "advancedView": false,
+      "lichtblickPanelTitle": "test1"
+    },
+    "Publish!t2": {
+      "topicName": "/cmd",
+      "datatype": "json",
+      "value": "{\"cmd\":\"$i02\"}",
+      "buttonText": "test2",
+      "buttonColor": "#8957e5",
+      "advancedView": false,
+      "lichtblickPanelTitle": "test2"
+    },
+    "Publish!t3": {
+      "topicName": "/cmd",
+      "datatype": "json",
+      "value": "{\"cmd\":\"$wt\"}",
+      "buttonText": "test3",
+      "buttonColor": "#1f8feb",
+      "advancedView": false,
+      "lichtblickPanelTitle": "test3"
+    },
+    "RosOut!log": {
+      "searchTerms": [],
+      "minLogLevel": 1,
+      "lichtblickPanelTitle": "事件日志"
+    },
+    "Gauge!loadkg": {
+      "path": "/load.kg",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "colorMode": "colormap",
+      "colorMap": "red-yellow-green",
+      "reverse": true,
+      "lichtblickPanelTitle": "重量（kg）"
+    },
+    "Indicator!rc": {
+      "path": "/health.rc",
+      "fallbackLabel": "重连",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "链路稳",
+          "operator": "=",
+          "rawValue": "0"
+        },
+        {
+          "color": "#d29922",
+          "label": "有重连",
+          "operator": ">=",
+          "rawValue": "1"
+        }
+      ]
+    },
+    "Indicator!dp": {
+      "path": "/health.dp",
+      "fallbackLabel": "丢包",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "无丢包",
+          "operator": "=",
+          "rawValue": "0"
+        },
+        {
+          "color": "#d29922",
+          "label": "有丢包",
+          "operator": ">=",
+          "rawValue": "1"
+        }
+      ]
+    },
+    "Indicator!err": {
+      "path": "/lidar_meta.err",
+      "fallbackLabel": "雷达错",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "雷达干净",
+          "operator": "=",
+          "rawValue": "0"
+        },
+        {
+          "color": "#da3633",
+          "label": "雷达报错",
+          "operator": ">=",
+          "rawValue": "1"
+        }
+      ]
+    },
+    "Indicator!lpmax": {
+      "path": "/health.lpmax",
+      "fallbackLabel": "循环峰值",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "循环健康",
+          "operator": "<=",
+          "rawValue": "50000"
+        },
+        {
+          "color": "#d29922",
+          "label": "有阻塞",
+          "operator": ">",
+          "rawValue": "50000"
+        }
+      ]
+    },
+    "3D!overhead": {
+      "cameraState": {
+        "perspective": true,
+        "distance": 10,
+        "phi": 12,
+        "thetaOffset": 0,
+        "targetOffset": [
+          0,
+          0.8,
+          0
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fovy": 45,
+        "near": 0.05,
+        "far": 5000
+      },
+      "scene": {
+        "backgroundColor": "#0d1117",
+        "mainLightMode": "headlight",
+        "directionalLightIntensity": 2.2,
+        "hemisphereLightIntensity": 1.2,
+        "transforms": {
+          "showLabel": false,
+          "axisScale": 0,
+          "lineWidth": 0,
+          "lineColor": "#00000000"
+        }
+      },
+      "transforms": {},
+      "topics": {
+        "/lidar": {
+          "visible": true,
+          "pointSize": 5,
+          "pointShape": "circle",
+          "decayTime": 4,
+          "colorMode": "colormap",
+          "colorField": "distance",
+          "colorMap": "turbo",
+          "minValue": 0.2,
+          "maxValue": 6,
+          "explicitAlpha": 0.9
+        },
+        "/scene": {
+          "visible": true,
+          "showOutlines": true
+        }
+      },
+      "layers": {
+        "grid": {
+          "visible": true,
+          "instanceId": "grid",
+          "layerId": "foxglove.Grid",
+          "label": "Grid",
+          "frameLocked": true,
+          "frameId": "world",
+          "size": 12,
+          "divisions": 12,
+          "lineWidth": 1.5,
+          "color": "#1e3a5f",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "followTf": "",
+      "lichtblickPanelTitle": "全局俯瞰(建图)",
+      "followMode": "follow-none"
+    },
+    "StateTransitions!states": {
+      "paths": [
+        {
+          "value": "/follow.st",
+          "label": "跟随状态",
+          "timestampMethod": "receiveTime"
+        },
+        {
+          "value": "/mode.v",
+          "label": "模式",
+          "timestampMethod": "receiveTime"
+        },
+        {
+          "value": "/load.ws",
+          "label": "称重",
+          "timestampMethod": "receiveTime"
+        }
+      ],
+      "lichtblickPanelTitle": "状态时序"
+    },
+    "Plot!err": {
+      "paths": [
+        {
+          "value": "/follow.e",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "color": "#e3b341",
+          "label": "跟随误差 m"
+        },
+        {
+          "value": 0,
+          "color": "#238636",
+          "label": "目标 0.6m"
+        },
+        {
+          "value": 0.3,
+          "color": "#da3633",
+          "label": "阈值 0.9m"
+        }
+      ],
+      "showLegend": true,
+      "legendDisplay": "top",
+      "showPlotValuesInLegend": true,
+      "xAxisVal": "timestamp",
+      "followingViewWidth": 30,
+      "minYValue": -0.5,
+      "maxYValue": 2.0,
+      "lichtblickPanelTitle": "跟随误差"
+    },
+    "Plot!quality": {
+      "paths": [
+        {
+          "value": "/pose.sl",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "color": "#4a9eff",
+          "label": "打滑率"
+        },
+        {
+          "value": "/imu.gz",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "color": "#8fd694",
+          "label": "角速度 dps"
+        }
+      ],
+      "showLegend": true,
+      "legendDisplay": "top",
+      "showPlotValuesInLegend": true,
+      "xAxisVal": "timestamp",
+      "followingViewWidth": 30,
+      "lichtblickPanelTitle": "运动质量"
+    },
+    "Tab!main": {
+      "activeTabIdx": 0,
+      "tabs": [
+        {
+          "title": "演示",
+          "layout": {
+            "direction": "column",
+            "splitPercentage": 8,
+            "first": {
+              "direction": "row",
+              "splitPercentage": 11.1111,
+              "first": "Indicator!mode",
+              "second": {
+                "direction": "row",
+                "splitPercentage": 12.5,
+                "first": "Indicator!follow",
+                "second": {
+                  "direction": "row",
+                  "splitPercentage": 14.2857,
+                  "first": "Indicator!uwb",
+                  "second": {
+                    "direction": "row",
+                    "splitPercentage": 16.6667,
+                    "first": "Indicator!prox",
+                    "second": {
+                      "direction": "row",
+                      "splitPercentage": 20,
+                      "first": "Indicator!radar",
+                      "second": {
+                        "direction": "row",
+                        "splitPercentage": 25,
+                        "first": "Indicator!range",
+                        "second": {
+                          "direction": "row",
+                          "splitPercentage": 33.3333,
+                          "first": "Indicator!link",
+                          "second": {
+                            "direction": "row",
+                            "splitPercentage": 50,
+                            "first": "Indicator!age",
+                            "second": "Indicator!alarm"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "second": {
+              "direction": "row",
+              "splitPercentage": 76,
+              "first": {
+                "direction": "column",
+                "splitPercentage": 84,
+                "first": "3D!linggou3d",
+                "second": {
+                  "direction": "row",
+                  "splitPercentage": 13,
+                  "first": {
+                    "direction": "column",
+                    "splitPercentage": 50,
+                    "first": {
+                      "direction": "column",
+                      "splitPercentage": 33.3333,
+                      "first": {
+                        "direction": "row",
+                        "splitPercentage": 50,
+                        "first": "Publish!q",
+                        "second": "Publish!w"
+                      },
+                      "second": {
+                        "direction": "column",
+                        "splitPercentage": 50,
+                        "first": {
+                          "direction": "row",
+                          "splitPercentage": 50,
+                          "first": "Publish!qm",
+                          "second": "Publish!wm"
+                        },
+                        "second": "Publish!ack"
+                      }
+                    },
+                    "second": {
+                      "direction": "row",
+                      "splitPercentage": 50,
+                      "first": "Publish!qm",
+                      "second": "Publish!wm"
+                    }
+                  },
+                  "second": "RosOut!log"
+                }
+              },
+              "second": {
+                "direction": "column",
+                "splitPercentage": 26,
+                "first": "Plot!mini",
+                "second": {
+                  "direction": "column",
+                  "splitPercentage": 42,
+                  "first": {
+                    "direction": "column",
+                    "splitPercentage": 24,
+                    "first": "Indicator!weight",
+                    "second": "Gauge!loadkg"
+                  },
+                  "second": {
+                    "direction": "column",
+                    "splitPercentage": 27.8,
+                    "first": "Indicator!openmv",
+                    "second": {
+                      "direction": "row",
+                      "splitPercentage": 33.3333,
+                      "first": "Publish!t1",
+                      "second": {
+                        "direction": "row",
+                        "splitPercentage": 50,
+                        "first": "Publish!t2",
+                        "second": "Publish!t3"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "系统",
+          "layout": {
+            "direction": "row",
+            "splitPercentage": 24,
+            "first": {
+              "direction": "column",
+              "splitPercentage": 20,
+              "first": "Indicator!rc",
+              "second": {
+                "direction": "column",
+                "splitPercentage": 20,
+                "first": "Indicator!dp",
+                "second": {
+                  "direction": "column",
+                  "splitPercentage": 20,
+                  "first": "Indicator!err",
+                  "second": {
+                    "direction": "column",
+                    "splitPercentage": 20,
+                    "first": "Indicator!lpmax",
+                    "second": "Indicator!voice"
+                  }
+                }
+              }
+            },
+            "second": {
+              "direction": "column",
+              "splitPercentage": 58,
+              "first": {
+                "direction": "row",
+                "splitPercentage": 55,
+                "first": "3D!overhead",
+                "second": {
+                  "direction": "column",
+                  "splitPercentage": 58,
+                  "first": "StateTransitions!states",
+                  "second": {
+                    "direction": "column",
+                    "splitPercentage": 72,
+                    "first": "Plot!err",
+                    "second": "Indicator!margin"
+                  }
+                }
+              },
+              "second": "Plot!quality"
+            }
+          }
+        }
+      ]
+    },
+    "Indicator!age": {
+      "path": "/health.wage",
+      "fallbackLabel": "数据龄",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "数据活",
+          "operator": "<",
+          "rawValue": "1.5"
+        },
+        {
+          "color": "#d29922",
+          "label": "滞后",
+          "operator": "<",
+          "rawValue": "3"
+        },
+        {
+          "color": "#da3633",
+          "label": "断流!",
+          "operator": ">=",
+          "rawValue": "3"
+        }
+      ],
+      "lichtblickPanelTitle": "数据龄"
+    },
+    "Indicator!alarm": {
+      "path": "/health.alarm_state",
+      "fallbackLabel": "报警",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "静默",
+          "operator": "=",
+          "rawValue": "0"
+        },
+        {
+          "color": "#da3633",
+          "label": "首出·未确认",
+          "operator": "=",
+          "rawValue": "1"
+        },
+        {
+          "color": "#d29922",
+          "label": "已确认·待恢复",
+          "operator": "=",
+          "rawValue": "2"
+        }
+      ],
+      "lichtblickPanelTitle": "报警状态"
+    },
+    "Indicator!margin": {
+      "path": "/follow.m",
+      "fallbackLabel": "裕度",
+      "fallbackColor": "#6e7681",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "充裕",
+          "operator": ">=",
+          "rawValue": "50"
+        },
+        {
+          "color": "#d29922",
+          "label": "收窄",
+          "operator": ">=",
+          "rawValue": "20"
+        },
+        {
+          "color": "#da3633",
+          "label": "贴线!",
+          "operator": "<",
+          "rawValue": "20"
+        }
+      ],
+      "lichtblickPanelTitle": "跟随裕度"
+    },
+    "Indicator!range": {
+      "path": "/health.range_min",
+      "fallbackLabel": "续航",
+      "fallbackColor": "#30363d",
+      "style": "background",
+      "rules": [
+        {
+          "color": "#238636",
+          "label": "充裕",
+          "operator": ">=",
+          "rawValue": "20"
+        },
+        {
+          "color": "#d29922",
+          "label": "关注",
+          "operator": ">=",
+          "rawValue": "10"
+        },
+        {
+          "color": "#da3633",
+          "label": "低!",
+          "operator": "<",
+          "rawValue": "10"
+        }
+      ],
+      "lichtblickPanelTitle": "预计续航"
+    },
+    "Publish!ack": {
+      "topicName": "/cmd",
+      "datatype": "json",
+      "value": "{\"cmd\":\"ack\"}",
+      "buttonText": "ACK 确认报警",
+      "buttonColor": "#d29922",
+      "advancedView": false,
+      "lichtblickPanelTitle": "确认报警"
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": "Tab!main"
+}

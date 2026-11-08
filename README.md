@@ -20,6 +20,8 @@ Lichtblick is an integrated visualization and diagnosis tool for robotics, avail
   </p>
 </div>
 
+> **灵购 fork 说明**：本仓库是 Lichtblick 的个人 fork，额外包含大创「灵购」智能购物车上位机接入层，见 [`linggou/`](./linggou/)。
+
 ## :rocket: Try Lichtblick
 
 **[Try Lichtblick now in your browser!](https://lichtblick-suite.github.io/lichtblick/)**

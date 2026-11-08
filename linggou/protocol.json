@@ -1,0 +1,72 @@
+{
+  "version": "RC2",
+  "encoding": "ASCII",
+  "terminator_hex": "0A",
+  "uart": {
+    "baud": 115200,
+    "data_bits": 8,
+    "parity": "none",
+    "stop_bits": 1
+  },
+  "repeat_ms": 50,
+  "lease_ms": 300,
+  "speed_profiles": {
+    "normal": {
+      "factor": 1.0,
+      "linear_mps": 0.2,
+      "rotate_radps": 0.35,
+      "start_suffix": ""
+    },
+    "fast": {
+      "factor": 1.5,
+      "linear_mps": 0.3,
+      "rotate_radps": 0.525,
+      "start_suffix": ",FAST"
+    }
+  },
+  "commands": {
+    "forward": "$RC2,START,FWD\n",
+    "backward": "$RC2,START,BACK\n",
+    "strafe_left": "$RC2,START,LEFT\n",
+    "strafe_right": "$RC2,START,RIGHT\n",
+    "spin_left": "$RC2,START,CCW\n",
+    "spin_right": "$RC2,START,CW\n",
+    "stop": "$RC2,STOP\n"
+  },
+  "business_extension": {
+    "capability_fw": "remote-voice-custom-20261025",
+    "price": {
+      "format": "$PRICE,NN,CENTS\n",
+      "id_min": 1,
+      "id_max": 11,
+      "value_min": 1,
+      "value_max": 99999,
+      "unit": "cents/kg for 01,02,04,05; cents/piece otherwise",
+      "persistent": false,
+      "revalues_existing_cart": true
+    },
+    "manual_weight": {
+      "format": "$SIM,WEIGHT,GRAMS\n",
+      "value_min": 1,
+      "value_max": 50000,
+      "requires": "active shopping with pending weighed item",
+      "commits_immediately": true,
+      "keeps_session_active": true,
+      "overrides_hx711_live_reading": false
+    },
+    "echo": {
+      "fields": [
+        "m",
+        "rx",
+        "ok",
+        "stage"
+      ],
+      "stages": {
+        "applied": "new command execution successful",
+        "queued": "legacy command accepted into FIFO; check mode/cart later",
+        "rejected": "format/range/state/queue rejected"
+      }
+    },
+    "flash_artifact_date": "2026-10-29"
+  }
+}
